@@ -1,0 +1,58 @@
+[
+
+    {
+        "WorkName": "Realistic Water",
+        "tags": ["Script"],
+        "description": "Advanced real-time water simulation system featuring dynamic waves, reflections, and physics-based interactions.",
+        "video": "https://www.youtube.com/embed/mdYAHMhiSDU"
+    },
+
+    {
+        "WorkName": "Combat System",
+        "tags": ["Script"],
+        "description": "Modular combat system with responsive controls, hit detection, and smooth animations. Supports combo mechanics, damage handling, and extensible features for scalable gameplay design.",
+        "video": "https://www.youtube.com/embed/g8fL46bGq3I"
+    },
+
+    {
+        "WorkName": "Chararcter Swap",
+        "tags": ["Script", "UI"],
+        "description": "Seamless character switching system inspired by Genshin Impact, allowing players to instantly swap between characters with smooth transitions, and responsive controls. Designed for fluid gameplay, supporting animations, cooldown handling, and scalable party management.",
+        "video": "https://www.youtube.com/embed/fIWU4EiFvL4"
+    },
+
+    {
+        "WorkName": "Rhythm Game",
+        "tags": ["Script", "UI"],
+        "description": "Fast-paced rhythm gameplay with precise timing windows, satisfying hit feedback, and dynamic combo scoring.",
+        "video": "https://www.youtube.com/embed/teircxJTXjQ"
+    },
+
+    {
+        "WorkName": "Youtube Status Displayer",
+        "tags": ["Script", "Backend", "UI"],
+        "description": "Live YouTube data display system with seamless backend syncing and responsive UI updates.",
+        "video": "https://www.youtube.com/embed/xH0cWCYZxnY"
+    },
+
+    {
+        "WorkName": "FPS Shooting",
+        "tags": ["Script"],
+        "description": "Advanced FPS system with raycast-based hit detection, recoil patterns, weapon modularity, and client-server synchronization for responsive gameplay.",
+        "video": "https://www.youtube.com/embed/9IV-FKh_j9g"
+    },
+
+    {
+        "WorkName": "Emotes System",
+        "tags": ["Script"],
+        "description": "Emote system with smooth animation playback and responsive controls.",
+        "video": "https://www.youtube.com/embed/XOiNGcGeWWI"
+    },
+
+    {
+        "WorkName": "Character Selection",
+        "tags": ["UI", "Script"],
+        "description": "Genshin-style character selection UI with smooth scrolling, focus transitions, and fully scripted interaction system.",
+        "video": "https://www.youtube.com/embed/mE126YZMSYo"
+    }
+]

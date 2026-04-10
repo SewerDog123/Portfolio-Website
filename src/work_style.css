@@ -1,0 +1,66 @@
+.work-container {
+    column-count: 2; 
+    column-gap: 50px; 
+    
+    max-width: 1500px;
+    margin: 50px auto;
+}
+
+.work-card {
+    background: linear-gradient(to right, rgb(169, 165, 206), rgb(138, 134, 173));
+    border-radius: 15px;
+    padding: 25px;
+    text-align: left;
+    align-self: start;
+    margin-bottom: 30px;
+
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+
+    filter: drop-shadow(0 0 10px rgb(145, 145, 145));
+    box-shadow: 0 0 0 3px rgb(188, 188, 236);
+}
+
+.work-card h3 {
+    margin: 5px -5px;
+    font-size: 60px;
+}
+
+.divider {
+    border: none;
+    height: 5px;
+    margin: 15px 0;
+    border-radius: 10px;
+
+    background: rgb(244, 245, 255);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.tags {
+    margin-bottom: 5px;
+}
+
+.tag {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0px 6px;
+    width: 100px;
+    height: 30px;
+    border-radius: 50px;
+    font-size: 18px;
+    margin-right: 5px;
+
+    font-weight: bold;
+}
+
+.tag.Script { background: rgb(255, 205, 111); }
+.tag.UI { background: rgb(210, 182, 255); }
+.tag.Backend { background: rgb(255, 139, 139); }
+
+.work-card video {
+    width: 100%;
+    margin-top: 5px;
+}
