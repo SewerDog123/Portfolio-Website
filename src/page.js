@@ -1,6 +1,8 @@
 const navbarContainer = document.getElementById("navbar");
 const content = document.getElementById("content");
 
+let currentPage = null;
+
 fetch("components/navbar.html")
     .then(res => res.text())
     .then(data => {
@@ -13,6 +15,8 @@ fetch("components/navbar.html")
                 e.preventDefault();
                 const page = link.getAttribute("data-page");
 
+                if (currentPage === page) return;
+
                 links.forEach(l => l.classList.remove("active"));
                 link.classList.add("active");
 
@@ -22,6 +26,8 @@ fetch("components/navbar.html")
     });
 
 function loadPage(page) {
+    currentPage = page;
+
     fetch(page)
         .then(res => res.text())
         .then(data => {
