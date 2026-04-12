@@ -52,13 +52,38 @@ function loadPage(page) {
         });
 }
 
+// Single shared observer for all video placeholders
+let videoObserver = null;
+
 function initWorksPage() {
     const basePath = window.location.pathname.includes("/pages/") ? "../" : "";
     fetch(`${basePath}data/work.json`)
         .then(rep => rep.json())
         .then(works => {
             const container = document.getElementById("worksContainer");
+            // Clear container if reloading
+            container.innerHTML = "";
             const fragment = document.createDocumentFragment();
+
+            // Create shared observer if not already created
+            if (!videoObserver) {
+                videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !entry.target.dataset.loaded) {
+                            const iframe = document.createElement("iframe");
+                            iframe.src = entry.target.dataset.videoUrl;
+                            iframe.width = "100%";
+                            iframe.height = "380";
+                            iframe.style.border = "none";
+                            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                            iframe.allowFullscreen = true;
+                            entry.target.appendChild(iframe);
+                            entry.target.dataset.loaded = "true";
+                            videoObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: "50px" });
+            }
 
             works.forEach(work => {
                 const card = document.createElement("div");
@@ -88,15 +113,14 @@ function initWorksPage() {
                 card.appendChild(line);
 
                 if (work.video) {
-                    const iframe = document.createElement("iframe");
-                    iframe.src = work.video;
-                    iframe.width = "100%";
-                    iframe.height = "380";
-                    iframe.style.border = "none";
-                    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-                    iframe.allowFullscreen = true;
-
-                    card.appendChild(iframe);
+                    const videoPlaceholder = document.createElement("div");
+                    videoPlaceholder.className = "video-placeholder";
+                    videoPlaceholder.style.width = "100%";
+                    videoPlaceholder.style.height = "380px";
+                    videoPlaceholder.style.backgroundColor = "#1a1a1a";
+                    videoPlaceholder.dataset.videoUrl = work.video;
+                    videoObserver.observe(videoPlaceholder);
+                    card.appendChild(videoPlaceholder);
                 }
 
                 fragment.appendChild(card);
