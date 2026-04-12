@@ -3,7 +3,7 @@ const content = document.getElementById("content");
 
 let currentPage = null;
 
-fetch("components/navbar.html")
+fetch("/src/components/navbar.html")
     .then(res => res.text())
     .then(data => {
         navbarContainer.innerHTML = data;
@@ -29,7 +29,12 @@ function loadPage(page) {
     currentPage = page;
 
     fetch(page)
-        .then(res => res.text())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`Failed to load ${page}: ${res.status}`);
+            }
+            return res.text();
+        })
         .then(data => {
             content.innerHTML = data;
 
@@ -42,22 +47,21 @@ function loadPage(page) {
                 }
             });
 
-            if (page === "pages/home.html") {
+            if (page === "src/pages/home.html") {
                 startCounter();
             }
 
-            if (page === "pages/works.html") {
+            if (page === "src/pages/works.html") {
                 initWorksPage();
             }
-        });
+        })
+        .catch(err => console.error("Error loading page:", err));
 }
 
 // Single shared observer for all video placeholders
 let videoObserver = null;
-
 function initWorksPage() {
-    const basePath = window.location.pathname.includes("/pages/") ? "../" : "";
-    fetch(`${basePath}data/work.json`)
+    fetch("/src/data/work.json")
         .then(rep => rep.json())
         .then(works => {
             const container = document.getElementById("worksContainer");
@@ -131,7 +135,7 @@ function initWorksPage() {
         .catch(err => console.error("Failed to load JSON: ", err));
 }
 
-loadPage("pages/home.html");
+loadPage("src/pages/home.html");
 
 function startCounter() {
     const element = document.getElementById("visitCount");
